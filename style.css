@@ -1,0 +1,700 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Oswald:wght@500;700&family=Poppins:wght@100;200;400;500;800&display=swap');
+
+@font-face{
+  font-family: 'Retro';
+  src: url('res/retro.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	user-zoom: none;
+	-webkit-user-zoom: none;
+}
+/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
+.noselect {
+	pointer-events: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+html{
+	scroll-behavior: smooth;
+	scroll-padding: 130px;
+}
+
+.loader.loading{
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	pointer-events: none;
+	user-select: none;
+}
+.loader{
+	position: fixed;
+	width: 0;
+	height: 0;
+	background-color: #000;
+}
+
+.loader div p{
+	color: white;
+	font-size: 1.2em;
+	font-family: 'Retro',sans-serif;
+	font-weight: normal;
+	text-align: center;
+}
+.loader div .progress{
+	border: 3px solid #fff;
+	width: 180px;
+	height: 30px;
+	margin-top: 20px;
+	background: linear-gradient(90deg, #fff 40%, #000 40%)
+}
+body {
+    background-color: #F4F5F7;
+}
+::selection{
+	background-color: #000;
+	color: #fff;
+}
+body .menu-item{
+	cursor: pointer;
+}
+body .top-bar{
+	width: 100%;
+	height: 70px;
+	background-color: #fff;
+	overflow: hidden;
+	z-index: 1;
+	transition: .7s ease-in-out;
+}
+body .top-bar.show{
+	position: fixed;
+	background-color: rgba(255,255,255,0.5);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+body .top-bar .menu-list{
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+body .top-bar .menu-list .menu-item{
+	text-transform: uppercase;
+	padding: 10px;
+}
+body .top-bar .menu-list .menu-item.active{
+	animation: rubberBand 1s linear;
+	border-radius: 2px;
+	background-color: #000;
+}
+body .top-bar .menu-list .menu-item.active a{
+	color: #fff;
+}
+body .top-bar .menu-list .menu-item a{
+	color: #232323;
+	font-size: 1em;
+	text-decoration: none;
+	font-family: 'Poppins',sans-serif;
+	font-weight: 800;
+}
+body .top-bar .menu-list .menu-header p{
+	color: #232323;
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Poppins',sans-serif;
+	font-weight: 800;
+}
+body .top-bar .menu-list .menu-header .desc{
+	color: #232323;
+	font-size: 0.7em;
+	text-align: center;
+	font-family: 'Poppins',sans-serif;
+	font-weight: 800;
+}
+body .top-bar .menu{
+	height: 40px;
+	width: 40px;
+	background-color: #F4F5F7;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 3px;
+	margin-right: 10px;
+	transform: translateY(50%);
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+body .top-bar.show .menu{
+	background-color: transparent;
+}
+body section{
+	min-width: 100vw;
+	min-height: 100vh;
+}
+body .home{
+	background-color: #fff;
+	padding: 20px;
+}
+body .home .content{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+body .home .icon{
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+}
+body .home .icon img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: 4px solid #232323;
+}
+
+body .center-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+body .home .content div div h1{
+	writing-mode: vertical-lr;
+	-ms-writing-mode: vertical-lr;
+	text-orientation: upright;
+	padding: 10px;
+	font-size: 2em;
+	background-color: #000;
+	color: #fff;
+	font-family: 'Oswald','Poppins',sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+body .home .content div div h1:hover{
+	
+	animation-duration: calc(1s * 2);
+	animation-name: hinge;
+	transform-origin: top left;
+}
+body .home .content div p{
+	text-align: center;
+	font-size: 1em;
+	font-family: 'Poppins',sans-serif;
+	margin: 10px;
+}
+body .home .content div .btn-skills{
+	padding: 10px;
+	border: none;
+	border-radius: 2px;
+	background-color: #000;
+}
+
+body .home .content div .btn-skills a{
+	color: #fff;
+	font-family: 'Chelsea Market','Oswald','Poppins',sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	text-align: center;
+	text-decoration: none;
+}
+body .home .content div .btn-skills:hover{
+	animation-name: jello;
+   transform-origin: center;
+	animation-duration: 1s;
+}
+
+body .aboutme{
+	text-align: center;
+	padding: 20px;
+}
+body .aboutme h1{
+	border-radius: 2px;
+	background-color: #fff;
+	color: #000;
+	padding: 10px;
+-webkit-box-shadow: 10px 10px 0px 0px #000;
+-moz-box-shadow: 10px 10px 0px 0px #000;
+box-shadow: 10px 10px 0px 0px #000;
+border: 2px solid #000;
+font-family: 'Oswald','Poppins',sans-serif;
+font-weight: 700;
+font-size: 1em;
+}
+body .aboutme p{
+	margin-top: 50px;
+	color: #000;
+	font-family: 'Chelsea Market','Poppins',sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+}
+body .skills{
+	min-height: 100vh;
+	width: 100vw;
+	padding: 20px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+}
+body .skills .title{
+	height: 100%;
+	padding: 20px;
+	background-color: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 2px;
+}
+body .skills .title h1{
+	color: #fff;
+	text-transform: uppercase;
+	writing-mode: vertical-lr;
+	-ms-writing-mode: vertical-lr;
+	font-family: 'Oswald','Poppins',sans-serif;
+	font-weight: 700;
+	font-size: 2em;
+	letter-spacing: 0.1em;
+	text-orientation: upright;
+}
+body .projects{
+	text-align: center;
+	padding: 20px;
+}
+body .projects h1{
+	border-radius: 2px;
+	background-color: #fff;
+	color: #000;
+	padding: 10px;
+-webkit-box-shadow: 10px 10px 0px 0px #000;
+-moz-box-shadow: 10px 10px 0px 0px #000;
+box-shadow: 10px 10px 0px 0px #000;
+border: 2px solid #000;
+font-family: 'Oswald','Poppins',sans-serif;
+font-weight: 700;
+font-size: 1em;
+}
+body .projects .content{
+	height: 100%;
+}
+body .skills .content{
+	width: 100%;
+	height: 100%;
+}
+body .skills .content .cards{
+	list-style: none;
+	padding: 40px;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	gap: 1rem;
+	grid-auto-flow: dense;
+	grid-auto-rows: 10rem;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%,15rem),1fr));
+}
+body .projects .content .cards{
+	list-style: none;
+	padding: 40px;
+	width: 100%;
+	display: grid;
+	gap: 2rem;
+	grid-auto-flow: dense;
+	grid-auto-rows: 22rem;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%,15rem),1fr));
+}
+body .skills .content .cards .card-item{
+	border-radius: 2px;
+	background-color: #000;
+	color: #fff;
+	padding: 50px;
+	display: flex;
+cursor: pointer;
+transition: all .4s ease-in;
+}
+body .skills .content .cards .card-item:hover{
+	transform: scale(1.2);
+}
+body .skills .content .cards .card-item .icon{
+	font-size: 1.5em;
+}
+body .skills .content .cards .card-item p{
+	color: #fff;
+	text-align: center;
+	font-family: 'retro','Oswald','Poppins',sans-serif;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	margin-left: 5px;
+}
+body .projects .content .cards .card-item{
+	border-radius: 2px;
+	background-color: #fff;
+	color: #000;
+	padding: 20px;
+-webkit-box-shadow: 10px 10px 0px 0px #000;
+-moz-box-shadow: 10px 10px 0px 0px #000;
+box-shadow: 10px 10px 0px 0px #000;
+border: 2px solid #000;
+cursor: pointer;
+transition: all .4s ease-in;
+}
+body .projects .content .cards .card-item:hover{
+	transform: scale(1.2);
+}
+body .projects .content .cards .card-item .title{
+	text-align: center;
+	color: #000;
+	font-family: 'retro','Chelsea Market','Oswald','Poppins',sans-serif;
+	font-weight: 700;
+	font-size: 1.4em;
+}
+body .projects .content .cards .card-item .desc{
+	text-align: center;
+	margin: 20px 0 20px 0;
+	color: #000;
+	font-family: 'retro','Chelsea Market','Oswald','Poppins',sans-serif;
+	font-size: 1em;
+}
+body .projects .content .cards .card-item .button{
+	padding: 10px;
+	text-align: center;
+	color: #000;
+	font-family: 'retro','Chelsea Market','Oswald','Poppins',sans-serif;
+	font-size: 1em;
+	border-radius: 2px;
+	border: 2px solid #000;
+	text-decoration: none;
+}
+body .projects .content .cards .card-item .button i{
+	text-align: center;
+	margin-right: 10px;
+}
+body .social{
+	background-color: #000;
+}
+body .social .head{
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+
+body .social .head img{
+	width: 70px;
+	height: 70px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 4px solid #fff;
+	pointer-events: none;
+}
+body .social .head p{
+	color: #fff;
+	font-family: 'Oswald','Poppins','retro','Chelsea Maket',sans-serif;
+	font-weight: 700;
+	font-size: 1em;
+	margin-left: 10px;
+}
+body .social .text{
+	color: #F4F5F7;
+	font-family: 'Poppins','retro','Chelsea Maket',sans-serif;
+	font-weight: 700;
+	font-size: 1.1em;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+body .social .social-list{
+	margin: 0 20px 10px 20px;
+	list-style: none;
+}
+body .social .social-list li{
+	margin: 5px 0 5px 0;
+}
+body .social .social-list li a{
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	font-family: 'retro','Chelsea Market','Oswald','Poppins',sans-serif;
+	font-size: 0.8em;
+}
+body .social .bottom-text{
+	background-color: #000;
+	border-top: 2px solid #fff;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+	font-family: 'retro','Chelsea Market','Oswald','Poppins',sans-serif;
+	font-size: 0.8em;
+}
+body .screen-menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 100vw;
+	background-color: #F4F5F7;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transform: translateX(100%);
+	transition: .8s ease-in-out;
+}
+
+body .screen-menu.show{
+	transform: translateX(0);
+	width: 100vw;
+	height: 100vh;
+	opacity: 1;
+}
+body .screen-menu .menu-mobile{
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	justify-content: space-around;
+}
+
+body .screen-menu .menu-mobile .menu-item{
+	border-radius: 2px;
+	background-color: #fff;
+	padding: 20px;
+-webkit-box-shadow: 10px 10px 0px 0px #000;
+-moz-box-shadow: 10px 10px 0px 0px #000;
+box-shadow: 10px 10px 0px 0px #000;
+border: 2px solid #000;
+}
+body .screen-menu .menu-mobile .menu-item.active{
+	background-color: #000;
+	padding: 20px;
+  -webkit-box-shadow: 10px 10px 0px 0px #fff;
+  -moz-box-shadow: 10px 10px 0px 0px #fff;
+   box-shadow: 10px 10px 0px 0px #fff;
+   border: 2px solid #fff;
+}
+body .screen-menu .menu-mobile .menu-item:hover{
+	animation: rubberBand 1s linear;
+}
+body .screen-menu .menu-mobile .menu-item a{
+	color: #000;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald','Poppins',sans-serif;
+font-weight: 700;
+font-size: 1em;
+text-align: center;
+}
+body .screen-menu .menu-mobile .menu-item.active a{
+	color: #fff;
+}
+body .screen-menu .menu{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 20px;
+	font-size: 1.4em;
+}
+body blockquote{
+	margin: 20px;
+	border-radius: 3px;
+	border: 2px solid #000;
+	padding: 10px;
+	color: #121D22;
+	background-color: #fff;
+	font-family: 'Retro',sans-serif;
+	font-weight: normal;
+	font-size: 0.7em;
+}
+body #canvas{
+	width: 100%;
+	height: 100%;
+	border: 2px solid #ccc;
+	font-family: 'Retro',sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	color: #000;
+	border-radius: 2px;
+	background-color: #fff;
+	padding: 10px;
+-webkit-box-shadow: 10px 10px 0px 0px #000;
+-moz-box-shadow: 10px 10px 0px 0px #000;
+box-shadow: 10px 10px 0px 0px #000;
+border: 2px solid #000;
+display: none;
+}
+
+@media screen and (max-width: 780px) {
+
+body .top-bar .menu-list .menu-item{
+	display: none;
+}
+body .top-bar .menu{
+	display: flex;
+}
+body .home{
+	width: 100vw;
+	height: 100vh;
+}
+body .home .content{
+	margin-top: 0;
+}
+body .skills .content{
+	overflow: hidden;
+}
+body .skills .content .cards{
+	height: 100%;
+}
+body .skills .content .cards .card-item .icon{
+	font-size: 1em;
+}
+body .skills .content .cards .card-item p{
+	font-size: 0.8em;
+}
+body .projects .content .cards{
+	height: 100%;
+}
+body #canvas{
+	display: inline;
+}
+}
+/* Animaciones */
+@keyframes jello {
+  from,
+  11.1%,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  22.2% {
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+
+  33.3% {
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+
+  44.4% {
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+
+  55.5% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+
+  66.6% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+
+  77.7% {
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+
+  88.8% {
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+@keyframes backInDown {
+  0% {
+    transform: translateY(-1200px) scale(0.7);
+    opacity: 0.7;
+  }
+
+  80% {
+    transform: translateY(0px) scale(0.7);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hinge {
+  0% {
+    animation-timing-function: ease-in-out;
+  }
+
+  20%,
+  60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  40%,
+  80% {
+    transform: rotate3d(0, 0, 1, 60deg);
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 700px, 0);
+    opacity: 0;
+  }
+}
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  animation-name: rubberBand;
+}
+
+.hinge {
+  animation-duration: calc(var(--animate-duration) * 2);
+  animation-name: hinge;
+  transform-origin: top left;
+}
+.backInDown {
+  animation-name: backInDown;
+}
+
+.jello {
+  animation-name: jello;
+  transform-origin: center;
+}
